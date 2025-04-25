@@ -62,8 +62,6 @@ try:
 except Exception as e:
     print("Hata:", e)
 
-
-
 for metastore in data["entries"]:
     entry = metastore["content"]
    
@@ -78,6 +76,8 @@ for metastore in data["entries"]:
 #    i = item.split('/')
 #    base_dir.append(i[0]+ '/' + i[1])
 
+print(warehouseArr)
+
 for item in warehouseArr:
     i = item.split('/')
     x = client.list_objects(bucket_name, i[0]+ '/' + i[1], recursive=True)
@@ -87,7 +87,7 @@ for item in warehouseArr:
         client.remove_object(bucket_name, item2.object_name)
         pass
 
-print(warehouseArr)
+
 #print(base_dir)
 
 #for_delete = []
